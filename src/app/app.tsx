@@ -1,10 +1,10 @@
 import  GlobalStyle from '.././global'
-import Login from '../pages/login/login'
+import Home from '../pages/home/home'
 
 export function App() {
   return (
     <>
-      <Login></Login>
+      <Home></Home>
       <GlobalStyle/>
     </>
   );
