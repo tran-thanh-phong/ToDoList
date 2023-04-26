@@ -7,6 +7,7 @@ import Folder from "../../assets/img/folder.svg";
 import Logout from "../../assets/img/logout.svg"
 import SidebarItem from "../../components/sidebar-item/sidebar-item";
 import TaskCard from "../../components/task-card/task-card";
+import AddTask from "../../components/add-task/add-task";
 
 /* eslint-disable-next-line */
 export interface HomeProps {}
@@ -29,6 +30,7 @@ const Home:React.FC = ()=>{
             <TaskCard name="Take care of the pets" list="Home" color="#FF9C9C"/>
             <TaskCard name="Take care of the pets" list="Home" color="#FF9C9C"/>
             <TaskCard name="Take care of the pets" list="Home" color="#FF9C9C"/>
+            <AddTask></AddTask>
           </S.Main>
       </S.Page>
   )

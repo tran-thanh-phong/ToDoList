@@ -20,7 +20,9 @@ const TaskCard: React.FC<TaskCardProps> = ({name, list, color}) => {
   return (
     <S.Container>
       <S.CheckField>
-        <input type="checkbox" onClick={handleCheck}/>
+        <S.CheckboxRing onClick={handleCheck}>
+          <S.CheckFill done={check}></S.CheckFill>
+        </S.CheckboxRing>
       </S.CheckField>
       
       <S.Description>
