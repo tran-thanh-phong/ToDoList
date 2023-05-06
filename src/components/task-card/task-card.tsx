@@ -15,10 +15,14 @@ export interface TaskCardProps {
 }
 
 const TaskCard: React.FC<TaskCardProps> = ({id, name, list, color, done}) => {
-  const { checkTask } = useContext(TaskListContext) as TaskListType;
+  const { checkTask, deleteTask } = useContext(TaskListContext) as TaskListType;
 
   function handleCheck() {
     checkTask(id);
+  }
+
+  function handleDelete() {
+    deleteTask(id);
   }
 
   return (
@@ -37,7 +41,8 @@ const TaskCard: React.FC<TaskCardProps> = ({id, name, list, color, done}) => {
         </S.ListBelong>
       </S.Description>
 
-      <S.Icon src={EditIcon}/><S.Icon  src={EraseIcon}/>
+      <S.Icon src={EditIcon}/>
+      <S.Icon src={EraseIcon} onClick={handleDelete}/>
     </S.Container>
   );
 }

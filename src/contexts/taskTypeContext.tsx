@@ -53,8 +53,12 @@ export const TaskListContextProvider : React.FC<ChildrenProps> = ({children}) =>
         });
     }
 
+    const deleteTask = (id: number) => {
+        setTaskList([...taskList.filter(x => x.id !== id)]);
+    }
+
     return(
-        <TaskListContext.Provider value={{taskList, addTask, checkTask}}>
+        <TaskListContext.Provider value={{taskList, addTask, checkTask, deleteTask}}>
             {children}
         </TaskListContext.Provider>
     )
