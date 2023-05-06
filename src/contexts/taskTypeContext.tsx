@@ -32,6 +32,9 @@ export const TaskListContextProvider : React.FC<ChildrenProps> = ({children}) =>
         },
     ]);
 
+    const [doneTasks, setDoneTasks] = useState<TaskProps[]>(taskList.filter(x => x.done === true));
+    const [notDoneTasks, setNotDoneTasks] = useState<TaskProps[]>(taskList.filter(x => x.done === false));
+
     const addTask = (task: TaskProps) => {
         const newTask : TaskProps = {
             id: Math.random(),
@@ -42,6 +45,8 @@ export const TaskListContextProvider : React.FC<ChildrenProps> = ({children}) =>
         }
 
         setTaskList([...taskList, newTask]);
+        setDoneTasks([...taskList.filter(x => x.done === true)]);
+        setNotDoneTasks([...taskList.filter(x => x.done === false)]);
     }
 
     const checkTask = (id: number) => {
@@ -49,6 +54,8 @@ export const TaskListContextProvider : React.FC<ChildrenProps> = ({children}) =>
             if (task.id === id) {
                 task.done = !task.done;
                 setTaskList([...taskList]);
+                setDoneTasks([...taskList.filter(x => x.done === true)]);
+                setNotDoneTasks([...taskList.filter(x => x.done === false)]);
             }
         });
     }
@@ -58,7 +65,7 @@ export const TaskListContextProvider : React.FC<ChildrenProps> = ({children}) =>
     }
 
     return(
-        <TaskListContext.Provider value={{taskList, addTask, checkTask, deleteTask}}>
+        <TaskListContext.Provider value={{taskList, doneTasks, notDoneTasks, addTask, checkTask, deleteTask}}>
             {children}
         </TaskListContext.Provider>
     )

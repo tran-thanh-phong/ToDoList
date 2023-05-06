@@ -87,6 +87,10 @@ export const CheckboxRing = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 export const CheckFill = styled.div<DoneProps>`
