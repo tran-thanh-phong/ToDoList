@@ -12,14 +12,17 @@ import AddTask from "../../components/add-task/add-task";
 import { TaskListContext } from "../../contexts/taskTypeContext";
 import { TaskListType, TaskProps } from "../../contexts/taskType";
 import FilterTag from "../../components/filter-tag/filter-tag";
-
-
+import DeleteModel from "../../components/delete-model/delete-model";
+import { DeleteContext } from "../../contexts/deleteContext";
+import { DeleteType } from "../../contexts/deleteType";
 
 /* eslint-disable-next-line */
 export interface HomeProps {}
 
 const Home:React.FC = ()=>{
-  const {taskList, doneTasks, notDoneTasks} = useContext(TaskListContext) as TaskListType;
+  const { taskList, doneTasks, notDoneTasks } = useContext(TaskListContext) as TaskListType;
+  const { showDelete } = useContext(DeleteContext) as DeleteType;
+
   const listOfLists = [taskList, doneTasks, notDoneTasks];
   const [listToDisplay, setListToDisplay] = useState(0);
 
@@ -77,6 +80,7 @@ const Home:React.FC = ()=>{
             }
             <AddTask></AddTask>
           </S.Main>
+          {showDelete && <DeleteModel/>}
       </S.Page>
   )
 }

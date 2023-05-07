@@ -1,13 +1,13 @@
 import  GlobalStyle from '.././global';
 import Home from '../pages/home/home';
-import { TaskListContextProvider } from '../contexts/taskTypeContext';
+import ContextProviders  from '../contextProviders';
 
 export function App() {
   return (
-    <TaskListContextProvider>
+    <ContextProviders>
       <Home></Home>
       <GlobalStyle/>
-    </TaskListContextProvider>
+    </ContextProviders>
   );
 }
 

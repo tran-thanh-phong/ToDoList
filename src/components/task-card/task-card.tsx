@@ -1,9 +1,11 @@
-import React, {useState, useContext} from "react";
+import React, { useContext } from "react";
 import * as S from "./styles";
 import EditIcon from "../../assets/img/edit.svg";
 import EraseIcon from "../../assets/img/erase.svg";
 import { TaskListContext } from "../../contexts/taskTypeContext";
 import { TaskListType } from "../../contexts/taskType";
+import { DeleteContext } from "../../contexts/deleteContext";
+import { DeleteType } from "../../contexts/deleteType";
 
 /* eslint-disable-next-line */
 export interface TaskCardProps {
@@ -15,14 +17,16 @@ export interface TaskCardProps {
 }
 
 const TaskCard: React.FC<TaskCardProps> = ({id, name, list, color, done}) => {
-  const { checkTask, deleteTask } = useContext(TaskListContext) as TaskListType;
+  const { checkTask } = useContext(TaskListContext) as TaskListType;
+  const { setShowDelete, setId } = useContext(DeleteContext) as DeleteType;
 
   function handleCheck() {
     checkTask(id);
   }
 
   function handleDelete() {
-    deleteTask(id);
+    setId(id);
+    setShowDelete(true);
   }
 
   return (
