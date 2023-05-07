@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import * as S from './styles';
 import { DeleteContext } from '../../contexts/deleteContext';
-import { TaskListContext } from '../../contexts/taskTypeContext';
+import { TaskListContext } from '../../contexts/taskListContext';
 import { TaskListType } from '../../contexts/taskType';
 import { DeleteType } from '../../contexts/deleteType';
 

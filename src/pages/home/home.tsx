@@ -9,13 +9,16 @@ import Filter from "../../assets/img/filter.svg";
 import SidebarItem from "../../components/sidebar-item/sidebar-item";
 import TaskCard from "../../components/task-card/task-card";
 import AddTask from "../../components/add-task/add-task";
-import { TaskListContext } from "../../contexts/taskTypeContext";
-import { TaskListType, TaskProps } from "../../contexts/taskType";
+import { TaskListContext } from "../../contexts/taskListContext";
+import { TaskListType } from "../../contexts/taskType";
 import FilterTag from "../../components/filter-tag/filter-tag";
 import DeleteModel from "../../components/delete-model/delete-model";
 import { DeleteContext } from "../../contexts/deleteContext";
 import { DeleteType } from "../../contexts/deleteType";
 import ExpandSidebarItem from "src/components/expand-sidebar-item/expand-sidebar-item";
+import AddModel from "src/components/add-model/add-model";
+import { AddContext } from "src/contexts/addContext";
+import { AddType } from "src/contexts/addType";
 
 /* eslint-disable-next-line */
 export interface HomeProps {}
@@ -23,6 +26,7 @@ export interface HomeProps {}
 const Home:React.FC = ()=>{
   const { taskList, doneTasks, notDoneTasks } = useContext(TaskListContext) as TaskListType;
   const { showDelete } = useContext(DeleteContext) as DeleteType;
+  const { showAdd } = useContext(AddContext) as AddType;
 
   const listOfLists = [taskList, doneTasks, notDoneTasks];
   const [listToDisplay, setListToDisplay] = useState(0);
@@ -82,6 +86,7 @@ const Home:React.FC = ()=>{
             <AddTask></AddTask>
           </S.Main>
           {showDelete && <DeleteModel/>}
+          {showAdd && <AddModel/>}
       </S.Page>
   )
 }

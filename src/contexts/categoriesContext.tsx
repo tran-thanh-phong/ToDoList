@@ -13,6 +13,11 @@ export const CategoriesContextProvider: React.FC<ChildrenProps> = ({
   const catList: CategoriesType = {
     cateList: [
         {
+          id: 0,
+          name: 'None',
+          color: '#AFAFAF',
+        },
+        {
           id: 1,
           name: 'Home',
           color: '#FF9C9C',

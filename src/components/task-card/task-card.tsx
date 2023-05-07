@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import * as S from "./styles";
 import EditIcon from "../../assets/img/edit.svg";
 import EraseIcon from "../../assets/img/erase.svg";
-import { TaskListContext } from "../../contexts/taskTypeContext";
+import { TaskListContext } from "../../contexts/taskListContext";
 import { TaskListType } from "../../contexts/taskType";
 import { DeleteContext } from "../../contexts/deleteContext";
 import { DeleteType } from "../../contexts/deleteType";

@@ -29,7 +29,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
       </S.Container>
       <S.CatArea isActive={active}>
         {cateList.map((cat) => (
-          <Category name={cat.name} color={cat.color} />
+          <Category key={cat.id} name={cat.name} color={cat.color} />
         ))}
 
         <S.AddArea>

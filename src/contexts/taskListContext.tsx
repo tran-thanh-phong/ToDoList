@@ -37,9 +37,9 @@ export const TaskListContextProvider : React.FC<ChildrenProps> = ({children}) =>
 
     const addTask = (task: TaskProps) => {
         const newTask : TaskProps = {
-            id: Math.random(),
+            id: task.id,
             title: task.title,
-            done: false,
+            done: task.done,
             categories: task.categories,
             color: task.color
         }
