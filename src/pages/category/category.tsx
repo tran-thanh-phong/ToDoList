@@ -19,17 +19,23 @@ import ExpandSidebarItem from "src/components/expand-sidebar-item/expand-sidebar
 import AddModel from "src/components/add-model/add-model";
 import { AddContext } from "src/contexts/addContext";
 import { AddType } from "src/contexts/addType";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 /* eslint-disable-next-line */
-export interface HomeProps {}
+export interface CategoryProps {}
 
-const Home:React.FC = ()=>{
+const Category:React.FC = ()=>{
+  const { name } = useParams<string>();
+
   const { taskList, doneTasks, notDoneTasks } = useContext(TaskListContext) as TaskListType;
   const { showDelete } = useContext(DeleteContext) as DeleteType;
   const { showAdd } = useContext(AddContext) as AddType;
 
-  const listOfLists = [taskList, doneTasks, notDoneTasks];
+  const listOfLists = [
+    taskList.filter(task => task.categories === name), 
+    doneTasks.filter(task => task.categories === name), 
+    notDoneTasks.filter(task => task.categories === name)
+  ];
   const [listToDisplay, setListToDisplay] = useState(0);
 
   const [allActive, setAllActive] = useState(true);
@@ -96,4 +102,4 @@ const Home:React.FC = ()=>{
   )
 }
 
-export default Home;
+export default Category;
