@@ -15,6 +15,7 @@ import FilterTag from "../../components/filter-tag/filter-tag";
 import DeleteModel from "../../components/delete-model/delete-model";
 import { DeleteContext } from "../../contexts/deleteContext";
 import { DeleteType } from "../../contexts/deleteType";
+import ExpandSidebarItem from "src/components/expand-sidebar-item/expand-sidebar-item";
 
 /* eslint-disable-next-line */
 export interface HomeProps {}
@@ -57,7 +58,7 @@ const Home:React.FC = ()=>{
               <S.Img src={Logo}/>
               <S.Tabs>
                   <SidebarItem icon={TaskFill} name="Tasks" isActive={true} ></SidebarItem>
-                  <SidebarItem icon={Folder} name="Categories" isActive={false} ></SidebarItem>
+                  <ExpandSidebarItem icon={Folder} name="Categories" ></ExpandSidebarItem>
                   <SidebarItem icon={Settings} name="Settings" isActive={false} ></SidebarItem>
               </S.Tabs>
               <SidebarItem icon={Logout}name="Logout" isActive={false}></SidebarItem>
