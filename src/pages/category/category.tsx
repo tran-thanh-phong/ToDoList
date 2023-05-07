@@ -20,6 +20,7 @@ import AddModel from "src/components/add-model/add-model";
 import { AddContext } from "src/contexts/addContext";
 import { AddType } from "src/contexts/addType";
 import { Link, useParams } from "react-router-dom";
+import { AuthContext, AuthType } from "src/contexts/authContext";
 
 /* eslint-disable-next-line */
 export interface CategoryProps {}
@@ -30,6 +31,7 @@ const Category:React.FC = ()=>{
   const { taskList, doneTasks, notDoneTasks } = useContext(TaskListContext) as TaskListType;
   const { showDelete } = useContext(DeleteContext) as DeleteType;
   const { showAdd } = useContext(AddContext) as AddType;
+  const { setUserData } = useContext(AuthContext) as AuthType;
 
   const listOfLists = [
     taskList.filter(task => task.categories === name), 
@@ -63,6 +65,13 @@ const Category:React.FC = ()=>{
     setNotDoneActive(true);
   }
 
+  function handleLogout() {
+    localStorage.removeItem('@Project:email');
+    setUserData({
+      email: ""
+    });
+  }
+
   return(
       <S.Page>
           <S.Sidebar>
@@ -74,7 +83,7 @@ const Category:React.FC = ()=>{
                   <ExpandSidebarItem icon={Folder} name="Categories" ></ExpandSidebarItem>
                   <SidebarItem icon={Settings} name="Settings" isActive={false} ></SidebarItem>
               </S.Tabs>
-              <Link to="/login" style={{ textDecoration: 'none' }}>
+              <Link to="/login" style={{ textDecoration: 'none' }} onClick={handleLogout}>
                 <SidebarItem icon={Logout} name="Logout" isActive={false}></SidebarItem>
               </Link>
           </S.Sidebar>

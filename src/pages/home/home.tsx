@@ -20,6 +20,7 @@ import AddModel from "src/components/add-model/add-model";
 import { AddContext } from "src/contexts/addContext";
 import { AddType } from "src/contexts/addType";
 import { Link } from "react-router-dom";
+import { AuthContext, AuthType } from "src/contexts/authContext";
 
 /* eslint-disable-next-line */
 export interface HomeProps {}
@@ -28,6 +29,7 @@ const Home:React.FC = ()=>{
   const { taskList, doneTasks, notDoneTasks } = useContext(TaskListContext) as TaskListType;
   const { showDelete } = useContext(DeleteContext) as DeleteType;
   const { showAdd } = useContext(AddContext) as AddType;
+  const { setUserData } = useContext(AuthContext) as AuthType;
 
   const listOfLists = [taskList, doneTasks, notDoneTasks];
   const [listToDisplay, setListToDisplay] = useState(0);
@@ -57,6 +59,13 @@ const Home:React.FC = ()=>{
     setNotDoneActive(true);
   }
 
+  function handleLogout() {
+    localStorage.removeItem('@Project:email');
+    setUserData({
+      email: ""
+    });
+  }
+
   return(
       <S.Page>
           <S.Sidebar>
@@ -68,7 +77,7 @@ const Home:React.FC = ()=>{
                   <ExpandSidebarItem icon={Folder} name="Categories" ></ExpandSidebarItem>
                   <SidebarItem icon={Settings} name="Settings" isActive={false} ></SidebarItem>
               </S.Tabs>
-              <Link to="/login" style={{ textDecoration: 'none' }}>
+              <Link to="/login" style={{ textDecoration: 'none' }} onClick={handleLogout}>
                 <SidebarItem icon={Logout} name="Logout" isActive={false}></SidebarItem>
               </Link>
           </S.Sidebar>
